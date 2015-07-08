@@ -1,0 +1,24 @@
+<h2>{{ championship.name }}</h2>
+<ul style="list-style: none;">
+  <li ng-repeat="league in championship.leagues" style="clear: both;">
+
+    <span style="display: inline-block; line-height: 50px; float: left; margin: 10px 10px 10px 0px;">
+      {{ league.name }}
+    </span>
+
+    <div ng-show='league.friends.length > 0' class="friends" style="float: left;">
+      <ul>
+        <li ng-repeat="friend in friends = (league.friends | limitTo: friendsLimit)" class="friend">
+          <img ng-src="{{friend.picture}}?width=54&amp;height=54" alt="{{friend.name}}" title="{{friend.name}}">
+        </li>
+        <li ng-show='league.friends.length > friendsLimit' class="more">
+          <span>+ {{ league.friends.length - friendsLimit }}</span>
+        </li>
+      </ul>
+    </div>
+
+    <span style="display: inline-block; line-height: 50px; margin: 10px 0px 10px 10px;">
+      {{ league.capacity - league.member_ids.length }} vagas - <a href ng-click="enterLeague(league)">entrar</a>
+    </span>
+  </li>
+</ul>
