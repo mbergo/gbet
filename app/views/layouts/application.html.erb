@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt_BR" ng-app="gamebetApp">
+<head>
+  <title>Gamebet</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Language" content="pt_BR" />
+  <meta name="description" content="Faça suas apostas, enfrente seus amigos e mostre que entende de futebol."/>
+  <meta property="fb:app_id" content="1436853629883247"/>
+  <meta property="og:title" content="Gamebet"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="<%= image_url "facebook-share.png" %>"/>
+  <meta property="og:site_name" content="Gamebet"/>
+  <meta property="og:description" content="Faça suas apostas, enfrente seus amigos e mostre que entende de futebol."/>
+  <%= favicon_link_tag "/gamebet.ico" %>
+
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= csrf_meta_tags %>
+
+  <%= javascript_include_tag "application" %>
+</head>
+<body ng-controller="AuthenticationController">
+  <div ng-hide="authScope.facebookReady"><%= yield %></div>
+  <div ng-show="authScope.facebookReady" ng-view></div>
+</body>
+</html>
