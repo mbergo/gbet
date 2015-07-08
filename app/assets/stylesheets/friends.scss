@@ -1,0 +1,37 @@
+@import "compass/css3";
+
+.friends {
+  margin: 10px 0;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    overflow: hidden;
+  }
+
+  li {
+    display: inline-block;
+    margin-right: 4px;
+    vertical-align: top;
+
+    &.friend {
+      img {
+        @include border-radius(50%);
+        width: 54px;
+        height: 54px;
+      }
+    }
+
+    &.more span {
+      text-align: center;
+      display: block;
+      @include border-radius(50%);
+      font-size: 13px;
+      width: 54px;
+      height: 54px;
+      line-height: 54px;
+      background-color: #777;
+    }
+  }
+}
