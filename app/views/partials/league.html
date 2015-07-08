@@ -1,0 +1,66 @@
+<a href ng-click="go('/home')">voltar</a><br />
+<a href ng-click="leaveLeague(championship, league)">sair da liga</a><br />
+
+<span>
+  <img ng-src="{{ authScope.user.picture }}"/>
+  {{ authScope.user.name }}
+</span>
+
+<br /><br />
+
+<span ng-show="oponnent">
+  <img width="50" height="50" ng-src="{{ authScope.user.picture }}" alt="{{ authScope.user.name }}" title="{{ authScope.user.name }}"/> x <img width="50" height="50" ng-src="{{ oponnent.picture }}" alt="{{ oponnent.name }}" title="{{ oponnent.name }}"/>
+</span>
+
+<br /><br />
+
+<span>Fechamento do mercado: {{ closes_at | date : 'HH:mm:ss dd/MM/yyyy' }}</span>
+
+<br /><br />
+
+<h1>
+    <a href ng-show="currentRound.order > 1" ng-click="changeRound(currentRound.order - 1)">&lt;&lt;</a>
+      {{currentRound.name}}
+    <a href ng-show="currentRound.order < championship.rounds.length" ng-click="changeRound(currentRound.order + 1)">&gt;&gt;</a>
+</h1>
+<ul class="bets">
+  <li ng-repeat="match in currentRound.matches">
+    <img ng-src="{{ match.host.shield }}" ng-class="{true: 'selected', false: ''}[match.bet == '1x0' && !currentRound.open]"/>
+    <input type="radio" ng-show="currentRound.open" ng-model="match.bet" value="1x0" ng-change="save(match, 1, 0)">
+    <span>{{ match.host.name }}</span>
+    <span ng-hide="currentRound.open">{{ match.host_score }}</span>
+
+    <input type="radio" ng-show="currentRound.open" ng-model="match.bet" value="0x0" ng-change="save(match, 0, 0)">
+    <span ng-class="{true: 'selected', false: ''}[match.bet == '0x0' && !currentRound.open]"> x </span>
+
+    <span ng-hide="currentRound.open">{{ match.guest_score }}</span>
+    <span>{{ match.guest.name }}</span>
+    <input type="radio" ng-show="currentRound.open" ng-model="match.bet" value="0x1" ng-change="save(match, 0, 1)">
+    <img ng-src="{{ match.guest.shield }}" ng-class="{true: 'selected', false: ''}[match.bet == '0x1' && !currentRound.open]"/><br />
+  </li>
+</ul>
+
+<br /><br />
+
+
+<h2 ng-show="league.ranking.placements">Ranking</h2>
+<table>
+  <tr>
+    <th>User</th>
+    <th>J</th>
+    <th>V</th>
+    <th>E</th>
+    <th>D</th>
+    <th>GP</th>
+    <th>GC</th>
+  </tr>
+  <tr ng-repeat="placement in league.ranking.placements">
+    <td>{{placement.user.name}}</td>
+    <td>{{placement.games}}</td>
+    <td>{{placement.wins}}</td>
+    <td>{{placement.draws}}</td>
+    <td>{{placement.loss}}</td>
+    <td>{{placement.scores_pro}}</td>
+    <td>{{placement.scores_against}}</td>
+  </tr>
+</table>
