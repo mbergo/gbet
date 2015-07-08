@@ -1,0 +1,13 @@
+Check_rounds_to_be_closed:
+  cron: "*/5 * * * *"
+  class: "Jobs::CheckRoundsToBeClosed"
+  queue: checks
+  args:
+  description: "This job checks if there is some round about to be closed"
+
+Check_rounds_to_calculate_ranking:
+  cron: "*/5 * * * *"
+  class: "Jobs::CheckRoundsToCalculateRanking"
+  queue: checks
+  args:
+  description: "This job checks if there is some round to calculate the ranking"
