@@ -1,0 +1,212 @@
+@import "compass/css3";
+
+@mixin no-font-ligatures {
+  -moz-font-feature-settings: "liga" 0;
+  -webkit-font-variant-ligatures: no-common-ligatures;
+}
+
+body {
+  .loading-page {
+    display: none;
+  }
+
+  .landing-page {
+    display: none;
+  }
+
+  .logged-page {
+    display: none;
+  }
+}
+
+body.loading {
+  .loading-page {
+    display: table;
+  }
+
+  .landing-page {
+    display: none;
+  }
+
+  .logged-page {
+    display: none;
+  }
+}
+
+body.not-logged {
+  .loading-page {
+    display: none;
+  }
+
+  .landing-page {
+    display: table;
+  }
+
+  .logged-page {
+    display: none;
+  }
+}
+
+body.logged {
+  .loading-page {
+    display: none;
+  }
+
+  .landing-page {
+    display: none;
+  }
+
+  .logged-page {
+    display: block;
+  }
+}
+
+body.loading {
+  font-size: 100%;
+  line-height: 1.6875;
+  background-color: #eae8e8;
+}
+
+body.not-logged {
+  font-size: 100%;
+  line-height: 1.6875;
+
+  background: image-url("background.jpg") no-repeat;
+  background-position: 50% 0;
+  background-color: black;
+  background-size: cover;
+
+  color: white;
+}
+
+.loading-page {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  min-width: 300px;
+  min-height: 100%;
+  display: table;
+
+  .content {
+    max-width: 960px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0 auto;
+    padding: 1em;
+
+    .lettering {
+      margin: 0.5em 0;
+      color: #666;
+      @include no-font-ligatures;
+      line-height: 1em;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.landing-page {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  min-width: 300px;
+  min-height: 100%;
+  display: table;
+
+  .content {
+    max-width: 960px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0 auto;
+    padding: 1em;
+    padding-bottom: 0;
+
+    .logo {
+      max-width: 212px;
+      width: 50%;
+    }
+
+    .lettering {
+      margin: 0.5em 0;
+      color: #ffd200;
+      font-size: 5em;
+      font-family: 'Braxton', sans-serif;
+      font-weight: 300;
+      @include no-font-ligatures;
+      line-height: 1em;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .btn-login {
+      font-size: 10px;
+      display: inline-block;
+      width: 193px;
+      height: 70px;
+      line-height: 70px;
+      text-align: center;
+
+      @include border-radius(3px);
+      @include background-clip(padding-box);
+      background-color: #435b9d;
+      @include box-shadow(0 1px 1px rgba(0,0,0,.2));
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+
+      .btn-image {
+        display: inline-block;
+        vertical-align: middle;
+        width: 75%;
+        height: 58%;
+        max-width: 143px;
+        max-height: 40px;
+        @include opacity(0.7);
+        background: image-url("login-hover.png") center no-repeat;
+        background-size: cover;
+        transition: opacity 0.2s;
+      }
+
+      &:hover, &:focus {
+        @include box-shadow(0 4px 5px rgba(0,0,0,.2));
+
+        .btn-image {
+          @include opacity(1.0);
+        }
+      }
+
+      &:active {
+        margin-top: 1px;
+        margin-bottom: -1px;
+      }
+    }
+
+    .ad-wrapper {
+      margin-top: 2em;
+    }
+
+    .wall-disclaimer {
+      margin-top: 2em;
+      @include opacity(0.4);
+      font-size: 0.8em;
+    }
+  }
+}
+
+.home-content-wrapper {
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.bets {
+  .selected {
+    background-color: #333;
+  }
+}
