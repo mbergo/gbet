@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header" style="text-align: center;">
+        Prove que você é o melhor dos palpites
+      </h1>
+      <h2 style="text-align: center;">
+        Qual campeonato você quer disputar?
+      </h2>
+    </div>
+    <div class="col-md-4" ng-repeat="championship in championships | limitTo: championshipsLimit" ng-click="go('/championships/' + championship.id);" style="cursor: pointer;">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>{{ championship.name }}</h4>
+         </div>
+        <div class="panel-body">
+          <div ng-show='championship.friends.length > 0' class="friends">
+            <p>{{ championship.friends.length }} amigos neste campeonato</p>
+            <ul>
+              <li ng-repeat="friend in friends = (championship.friends | limitTo: friendsLimit)" class="friend">
+                <img ng-src="{{friend.picture}}?width=54&amp;height=54" alt="{{friend.name}}" title="{{friend.name}}" />
+              </li>
+              <li ng-show='championship.friends.length > friendsLimit' class="more">
+                <span>+ {{ championship.friends.length - friendsLimit }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
